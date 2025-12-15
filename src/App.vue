@@ -14,12 +14,18 @@
     <main>
       <!-- HERO -->
       <section id="accueil" class="hero">
-        <div class="hero-text">
-          <h1>La propreté.<br /><span>Version premium.</span></h1>
+        <div class="hero-content">
+          <h1>
+            La propreté.<br />
+            <span>Version premium.</span>
+          </h1>
+
           <p>
-            Mj Clean Pro Service vous offre un service de nettoyage complet, adapté à vos besoins
+            MJ Clean Pro Service vous offre un service de nettoyage complet, adapté à vos besoins
             spécifiques.
           </p>
+
+          <a href="#contact" class="hero-cta">Demander un devis</a>
         </div>
       </section>
 
@@ -40,40 +46,44 @@
       </section>
 
       <!-- SERVICES -->
-      <section id="services" class="apple-cards">
-        <div class="card">
-          <img src="https://source.unsplash.com/600x600/?cleaning,home" />
+      <section id="services" class="services">
+        <div class="service-card">
+          <div class="icon">🧹</div>
           <h3>Nettoyage ponctuel</h3>
-          <p>À la demande</p>
+          <p>Intervention à la demande, rapide et efficace.</p>
         </div>
-        <div class="card">
-          <img src="https://source.unsplash.com/600x600/?cleaning,office" />
+
+        <div class="service-card highlight">
+          <div class="icon">📆</div>
           <h3>Contrat régulier</h3>
-          <p>Sérénité à long terme</p>
+          <p>Sérénité et propreté durable toute l’année.</p>
         </div>
-        <div class="card">
-          <img src="https://source.unsplash.com/600x600/?elderly,help" />
+
+        <div class="service-card">
+          <div class="icon">🤝</div>
           <h3>Aide à domicile</h3>
-          <p>Assistance quotidienne</p>
+          <p>Assistance quotidienne adaptée à vos besoins.</p>
         </div>
       </section>
 
       <!-- TARIFS -->
       <section id="tarifs" class="pricing">
-        <h2>Des tarifs horaires simples.</h2>
+        <h2>Des tarifs simples et transparents.</h2>
         <p class="muted">Au plus proche de vos besoins</p>
+
         <div class="plans">
           <div class="plan">
             <h3>Occasionnel</h3>
             <p class="price">14.75€</p>
-            <p>TTC après crédit impôt</p>
-            <p>soit 29.50€ TTC sans crédit impôt</p>
+            <p>TTC après crédit d’impôt</p>
           </div>
+
           <div class="plan highlight">
             <h3>Abonnement</h3>
             <p class="price">20€</p>
             <p>par heure</p>
           </div>
+
           <div class="plan">
             <h3>Aide à domicile</h3>
             <p class="price">22€</p>
@@ -81,160 +91,99 @@
           </div>
         </div>
       </section>
+
       <!-- CONTACT -->
       <section id="contact" class="contact">
-        <h2>Contactez MJ Clean.</h2>
+        <h2>Contactez MJ Clean</h2>
         <p>Réponse rapide, devis gratuit.</p>
-        <p class="contact-line">📞 Téléphone : à renseigner</p>
-        <p class="contact-line">✉ mjclean.proservices29@gmail.com</p>
-      </section>
-
-      <!-- CONTACT FORM -->
-      <section id="contact" class="contact">
-        <h2>Contactez-nous</h2>
-        <p>Réponse rapide, devis gratuit.</p>
-
-        <!-- Formulaire -->
-        <form class="apple-form" @submit.prevent="sendEmail">
-          <div class="input-group">
-            <input v-model="form.name" type="text" placeholder="Nom complet" required />
-          </div>
-
-          <div class="input-group">
-            <input v-model="form.email" type="email" placeholder="Adresse email" required />
-          </div>
-
-          <div class="input-group">
-            <input v-model="form.phone" type="tel" placeholder="Téléphone" />
-          </div>
-
-          <div class="input-group">
-            <textarea v-model="form.message" placeholder="Votre message" required></textarea>
-          </div>
-
-          <!-- Placeholder reCAPTCHA -->
-          <div class="g-recaptcha" data-sitekey="VOTRE_SITE_KEY"></div>
-
-          <button type="submit" :disabled="loading" :class="{ sending: loading }">
-            {{ loading ? 'Envoi...' : 'Envoyer le message' }}
-          </button>
-
-          <p v-if="success" class="success show">
-            ✅ Merci {{ form.name }}, votre message a été envoyé !
-          </p>
-          <p v-if="error" class="error show">❌ Erreur, veuillez réessayer.</p>
-        </form>
+        <p>✉ mjclean.proservices29@gmail.com</p>
       </section>
     </main>
 
-    <footer>© MJ Clean - Tous droits réservés</footer>
+    <footer>© MJ Clean Pro Service</footer>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-//import emailjs from '@emailjs/browser'
-
-const form = ref({
-  name: '',
-  email: '',
-  phone: '',
-  message: '',
-})
-
-const loading = ref(false)
-const success = ref(false)
-const error = ref(false)
-
-const sendEmail = () => {
-  loading.value = true
-  success.value = false
-  error.value = false
-
-  // Envoi email au pro
-  emailjs
-    .send(
-      'SERVICE_ID', // remplace par ton Service ID
-      'TEMPLATE_ID', // remplace par ton Template ID
-      {
-        name: form.value.name,
-        email: form.value.email,
-        phone: form.value.phone,
-        message: form.value.message,
-      },
-      'PUBLIC_KEY', // remplace par ta Public Key
-    )
-    .then(() => {
-      // Email automatique au client
-      emailjs.send(
-        'SERVICE_ID',
-        'RESPONSE_TEMPLATE',
-        {
-          name: form.value.name,
-          email: form.value.email,
-        },
-        'PUBLIC_KEY',
-      )
-
-      success.value = true
-      loading.value = false
-      form.value = { name: '', email: '', phone: '', message: '' }
-    })
-    .catch(() => {
-      error.value = true
-      loading.value = false
-    })
-}
-</script>
-
 <style scoped>
+/* PALETTE */
+:root {
+  --bg-main: #faf6ef;
+  --bg-soft: #f4ede4;
+  --blue-dark: #243a5e;
+  --blue-accent: #4f7cff;
+  --text-main: #1d1d1f;
+  --text-muted: #6b7280;
+}
+
+/* GLOBAL */
 .apple {
-  background: #f5f5f7;
-  color: #1d1d1f;
   font-family: -apple-system, BlinkMacSystemFont, system-ui;
+  background: var(--bg-main);
+  color: var(--text-main);
 }
 
 /* HEADER */
 .nav {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.85);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-between;
   padding: 18px 40px;
-  border-bottom: 1px solid #ddd;
 }
+
 .nav a {
-  text-decoration: none;
-  color: black;
   margin-left: 20px;
+  text-decoration: none;
+  color: var(--blue-dark);
 }
+
 .cta {
-  border: 1px solid black;
+  border: 1px solid var(--blue-dark);
   padding: 6px 14px;
-  border-radius: 99px;
+  border-radius: 999px;
 }
 
 /* HERO */
 .hero {
-  height: 85vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: url('https://source.unsplash.com/1600x900/?clean,minimal,home') center/cover;
+  padding: 0 8%;
+  background: url('assets/hero-cleaning.png'), linear-gradient(120deg, #faf6ef 0%, #f4ede4 60%);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
 }
-.hero-text {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 40px;
-  border-radius: 24px;
-  text-align: center;
+
+.hero-content {
+  max-width: 520px;
 }
+
 .hero h1 {
-  font-size: 50px;
+  font-size: 54px;
+  line-height: 1.1;
+  color: var(--blue-dark);
 }
+
 .hero span {
-  color: #0071e3;
+  color: var(--blue-accent);
+}
+
+.hero p {
+  font-size: 18px;
+  margin: 24px 0 32px;
+  color: var(--text-muted);
+}
+
+.hero-cta {
+  background: var(--blue-dark);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 999px;
+  text-decoration: none;
 }
 
 /* VALUES */
@@ -242,31 +191,34 @@ const sendEmail = () => {
   display: flex;
   justify-content: center;
   gap: 60px;
-  margin: 80px 20px;
+  padding: 80px 20px;
 }
 
 /* SERVICES */
-.apple-cards {
+.services {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin: 80px 20px;
+  padding: 80px 20px;
 }
-.card {
+
+.service-card {
   background: white;
   width: 260px;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  padding: 40px 30px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
-.card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
+
+.service-card .icon {
+  font-size: 42px;
+  margin-bottom: 20px;
 }
-.card h3,
-.card p {
-  padding: 12px 16px;
+
+.service-card.highlight {
+  background: var(--blue-dark);
+  color: white;
 }
 
 /* PRICING */
@@ -275,99 +227,60 @@ const sendEmail = () => {
   padding: 100px 20px;
   text-align: center;
 }
+
 .plans {
   display: flex;
   justify-content: center;
   gap: 30px;
 }
+
 .plan {
-  background: #f5f5f7;
+  background: var(--bg-soft);
   padding: 30px;
-  border-radius: 22px;
+  border-radius: 24px;
   width: 200px;
 }
-.highlight {
-  background: black;
+
+.plan.highlight {
+  background: var(--blue-dark);
   color: white;
 }
-.highlight .price {
-  color: #0af;
-}
+
 .price {
-  font-size: 46px;
+  font-size: 44px;
   font-weight: bold;
 }
 
-/* FORMULAIRE */
+/* CONTACT */
 .contact {
   padding: 80px 20px;
   text-align: center;
 }
-.apple-form {
-  max-width: 420px;
-  margin: 40px auto;
-}
-.input-group input,
-.input-group textarea {
-  width: 100%;
-  background: #f5f5f7;
-  border: none;
-  padding: 14px 18px;
-  border-radius: 14px;
-  margin-bottom: 14px;
-  font-size: 16px;
-  outline: none;
-}
-.input-group input:focus,
-.input-group textarea:focus {
-  background: white;
-  box-shadow: 0 0 0 2px #0071e3;
-}
-textarea {
-  min-height: 110px;
-}
-button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 14px;
-  width: 100%;
-  border-radius: 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-button.sending {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-.success,
-.error {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  margin-top: 15px;
-}
-.success.show,
-.error.show {
-  opacity: 1;
-}
 
 /* FOOTER */
 footer {
-  background: #e5e5e7;
+  background: #e9e4db;
   padding: 20px;
   text-align: center;
 }
 
 /* RESPONSIVE */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
+  .hero {
+    background-position: center bottom;
+    background-size: 80%;
+    padding: 60px 20px;
+  }
+
   .values,
-  .apple-cards,
+  .services,
   .plans {
     flex-direction: column;
     align-items: center;
   }
+
   .hero h1 {
-    font-size: 36px;
+    font-size: 38px;
   }
 }
 </style>
