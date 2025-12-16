@@ -4,9 +4,9 @@
     <header class="nav" role="navigation">
       <div class="brand">MJ Clean Pro Service</div>
       <nav class="nav-links">
-        <a href="#accueil">Accueil</a>
-        <a href="#services">Services</a>
-        <a href="#tarifs">Tarifs</a>
+        <a href="#accueil" class="optional">Accueil</a>
+        <a href="#services" class="optional">Services</a>
+        <a href="#tarifs" class="optional">Tarifs</a>
         <a href="#contact" class="cta">Contact</a>
       </nav>
     </header>
@@ -35,7 +35,7 @@
         </article>
         <article class="value">
           <h3>Humain</h3>
-          <p>Une entreprise familiale à l’écoute et proche de vous.</p>
+          <p>Une équipe à l’écoute et proche de vous.</p>
         </article>
         <article class="value">
           <h3>Efficace</h3>
@@ -48,19 +48,19 @@
         <h2 id="services-title" class="section-title">Nos services</h2>
         <div class="services-grid">
           <article class="service-card">
-            <div class="icon" aria-hidden="true">🧹</div>
+            <div class="icon taille-icone" aria-hidden="true">🧹</div>
             <h3>Nettoyage ponctuel</h3>
             <p>Intervention rapide selon vos besoins.</p>
           </article>
 
           <article class="service-card highlight">
-            <div class="icon" aria-hidden="true">📆</div>
+            <div class="icon taille-icone" aria-hidden="true">📆</div>
             <h3>Contrat régulier</h3>
             <p>Un intérieur propre toute l’année, sans souci.</p>
           </article>
 
           <article class="service-card">
-            <div class="icon" aria-hidden="true">🤝</div>
+            <div class="icon taille-icone" aria-hidden="true">🤝</div>
             <h3>Aide à domicile</h3>
             <p>Un accompagnement personnalisé au quotidien.</p>
           </article>
@@ -69,7 +69,7 @@
 
       <!-- TARIFS -->
       <section id="tarifs" class="pricing" aria-labelledby="pricing-title">
-        <h2 id="pricing-title">Des tarifs horaires simples et transparents</h2>
+        <h2 id="pricing-title">Des tarifs simples et transparents</h2>
         <p class="muted">Au plus proche de vos besoins</p>
 
         <div class="plans">
@@ -82,13 +82,13 @@
           <article class="plan highlight">
             <h3>Abonnement</h3>
             <p class="price">20 €</p>
-            <p class="plan-desc">TTC après crédit d’impôt</p>
+            <p class="plan-desc">par heure</p>
           </article>
 
           <article class="plan">
             <h3>Aide à domicile</h3>
             <p class="price">22 €</p>
-            <p class="plan-desc">TTC après crédit d’impôt</p>
+            <p class="plan-desc">par heure</p>
           </article>
         </div>
       </section>
@@ -122,6 +122,9 @@
   color: var(--text-main);
 }
 
+.taille-icone {
+  font-size: 3.1rem;
+}
 /* HEADER */
 .nav {
   position: sticky;
@@ -134,7 +137,9 @@
   justify-content: space-between;
   padding: 16px 40px;
 }
-
+.optional {
+  display: none;
+}
 .nav-links a {
   margin-left: 20px;
   text-decoration: none;
@@ -157,7 +162,7 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  padding: 0 8%;
+
   background:
     url('assets/hero-cleaning.png') no-repeat right center / contain,
     linear-gradient(120deg, #faf6ef 0%, #f4ede4 60%);
@@ -195,43 +200,36 @@
   background: var(--blue-accent);
 }
 
-/* VALUES */
+/* VALEURS – GRID */
 .values {
   display: flex;
-  justify-content: center;
-  gap: 60px;
+  flex-direction: column; /* ⬅️ empile sur téléphone */
+  gap: 32px;
   padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
   text-align: center;
 }
 
-/* SERVICES */
+/* SERVICES – GRID AUTO */
 .services {
   padding: 80px 20px;
-}
-
-.section-title {
   text-align: center;
-  margin-bottom: 48px;
 }
 
 .services-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  gap: 32px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .service-card {
   background: #fff;
-  width: 260px;
   padding: 40px 30px;
   border-radius: 28px;
-  text-align: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-.service-card .icon {
-  font-size: 42px;
-  margin-bottom: 20px;
 }
 
 .service-card.highlight {
@@ -239,29 +237,25 @@
   color: #fff;
 }
 
-/* PRICING */
+/* PRICING – GRID */
 .pricing {
   background: #fff;
   padding: 100px 20px;
   text-align: center;
 }
 
-.muted {
-  color: var(--text-muted);
-}
-
 .plans {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 40px;
+  display: grid;
+  gap: 32px;
+  max-width: 900px;
+  margin: 40px auto 0;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .plan {
   background: var(--bg-soft);
-  padding: 30px;
+  padding: 32px;
   border-radius: 24px;
-  width: 200px;
 }
 
 .plan.highlight {
@@ -270,7 +264,7 @@
 }
 
 .price {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   font-weight: 700;
 }
 
@@ -280,37 +274,55 @@
   text-align: center;
 }
 
-.contact-mail {
-  color: var(--blue-dark);
-  text-decoration: none;
-  font-weight: 500;
-}
-
 /* FOOTER */
 footer {
-  background: #e9e4db;
   padding: 20px;
   text-align: center;
-  font-size: 0.9rem;
+  background: #e9e4db;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero {
-    background-position: center bottom;
-    background-size: 80%;
-    padding: 60px 20px;
+/* TABLET+ */
+@media (min-width: 768px) {
+  .nav-links {
+    display: block;
   }
 
-  .values,
-  .services-grid,
-  .plans {
-    flex-direction: column;
-    align-items: center;
+  .hero {
+    text-align: left;
+    padding: 120px 8%;
   }
 
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: 3rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 90vh;
+    padding: 0 8%;
+    background-position: right center;
+    background-size: contain;
+  }
+  .optional {
+    display: inline;
+  }
+
+  .hero h1 {
+    font-size: 3.2rem;
+  }
+
+  .values {
+    flex-direction: row;
+  }
+
+  .services-grid,
+  .plans {
+    flex-direction: row;
+  }
+  .values {
+    flex-direction: row; /* ⬅️ côte à côte sur écran large */
   }
 }
 </style>
