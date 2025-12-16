@@ -164,8 +164,10 @@
   align-items: center;
 
   background:
-    url('assets/hero-cleaning.png') no-repeat right center / contain,
+    url('assets/hero-cleaning.png') no-repeat right center / cover,
     linear-gradient(120deg, #faf6ef 0%, #f4ede4 60%);
+
+  background-position: 60%;
 }
 
 .hero-content {
@@ -304,6 +306,9 @@ footer {
     padding: 0 8%;
     background-position: right center;
     background-size: contain;
+    background:
+      url('assets/hero-cleaning.png') no-repeat right center / contain,
+      linear-gradient(120deg, #faf6ef 0%, #f4ede4 60%);
   }
   .optional {
     display: inline;
