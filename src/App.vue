@@ -16,7 +16,7 @@
       <section id="accueil" class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
           <h1 id="hero-title">
-            La propreté.<br />
+            La propreté<br />
             <span>Version premium</span>
           </h1>
           <p>
