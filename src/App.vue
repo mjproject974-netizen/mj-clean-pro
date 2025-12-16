@@ -17,11 +17,11 @@
         <div class="hero-content">
           <h1 id="hero-title">
             La propreté.<br />
-            <span>Version premium.</span>
+            <span>Version premium</span>
           </h1>
           <p>
             MJ Clean Pro Service vous propose un service de nettoyage professionnel, fiable et
-            adapté à vos besoins.
+            adapté à vos besoins
           </p>
           <a href="#contact" class="hero-cta">Demander un devis</a>
         </div>
