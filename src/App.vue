@@ -35,7 +35,7 @@
         </article>
         <article class="value">
           <h3>Humain</h3>
-          <p>Une équipe à l’écoute et proche de vous.</p>
+          <p>Une entreprise familiale à l’écoute et proche de vous.</p>
         </article>
         <article class="value">
           <h3>Efficace</h3>
@@ -69,26 +69,43 @@
 
       <!-- TARIFS -->
       <section id="tarifs" class="pricing" aria-labelledby="pricing-title">
-        <h2 id="pricing-title">Des tarifs simples et transparents</h2>
+        <h2 id="pricing-title">Des tarifs horaires simples et transparents</h2>
         <p class="muted">Au plus proche de vos besoins</p>
 
         <div class="plans">
           <article class="plan">
             <h3>Occasionnel</h3>
-            <p class="price">14,75 €</p>
-            <p class="plan-desc">TTC après crédit d’impôt</p>
+            <p class="price">14,75 € *</p>
+            <p class="plan-desc">* Tarif horaires TTC après crédit d’impôt</p>
+            <p class="plan-desc">soit 29,50 € TTC</p>
           </article>
 
           <article class="plan highlight">
-            <h3>Abonnement</h3>
-            <p class="price">20 €</p>
-            <p class="plan-desc">par heure</p>
+            <h3>2h—3h/semaine</h3>
+            <p class="price">13,25 € *</p>
+            <p class="plan-desc">* Tarif horaires TTC après crédit d’impôt</p>
+            <p class="plan-desc">soit 26,50 € TTC</p>
           </article>
 
           <article class="plan">
-            <h3>Aide à domicile</h3>
-            <p class="price">22 €</p>
-            <p class="plan-desc">par heure</p>
+            <h3>4h—5h/semaine</h3>
+            <p class="price">13,10 € *</p>
+            <p class="plan-desc">* Tarif horaires TTC après crédit d’impôt</p>
+            <p class="plan-desc">soit 26,20 € TTC</p>
+          </article>
+
+          <article class="plan">
+            <h3>6h—12h/semaine</h3>
+            <p class="price">12,75 € *</p>
+            <p class="plan-desc">* Tarif horaires TTC après crédit d’impôt</p>
+            <p class="plan-desc">soit 25,50 € TTC</p>
+          </article>
+
+          <article class="plan">
+            <h3>>12h/semaine</h3>
+            <p class="price">12,60 € *</p>
+            <p class="plan-desc">* Tarif horaires TTC après crédit d’impôt</p>
+            <p class="plan-desc">soit 25,20 € TTC</p>
           </article>
         </div>
       </section>
@@ -251,7 +268,8 @@
   gap: 32px;
   max-width: 900px;
   margin: 40px auto 0;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 320px));
+  justify-content: center;
 }
 
 .plan {
@@ -328,6 +346,10 @@ footer {
   }
   .values {
     flex-direction: row; /* ⬅️ côte à côte sur écran large */
+  }
+
+  .plans {
+    grid-template-columns: repeat(3, minmax(0, 320px));
   }
 }
 </style>
