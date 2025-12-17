@@ -30,15 +30,15 @@
       <!-- VALEURS -->
       <section class="values" aria-label="Nos valeurs">
         <article class="value">
-          <h3>Simple</h3>
+          <h3>Simplicité</h3>
           <p>Tarifs clairs et services transparents.</p>
         </article>
         <article class="value">
-          <h3>Humain</h3>
+          <h3>Proximité</h3>
           <p>Une entreprise familiale à l’écoute et proche de vous.</p>
         </article>
         <article class="value">
-          <h3>Efficace</h3>
+          <h3>Efficacité</h3>
           <p>Un résultat professionnel à chaque passage.</p>
         </article>
       </section>
