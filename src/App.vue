@@ -264,7 +264,8 @@
 }
 
 .plans {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 32px;
   max-width: 900px;
   margin: 40px auto 0;
@@ -349,7 +350,12 @@ footer {
   }
 
   .plans {
+    display: grid;
+    gap: 32px;
+    max-width: 900px;
+    margin: 40px auto 0;
     grid-template-columns: repeat(3, minmax(0, 320px));
+    justify-content: center;
   }
 }
 </style>
