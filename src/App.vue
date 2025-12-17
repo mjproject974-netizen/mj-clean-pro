@@ -117,6 +117,8 @@
         <a class="contact-mail" href="mailto:mjclean.proservices29@gmail.com">
           ✉ mjclean.proservices29@gmail.com
         </a>
+
+        <a class="contact-phone" href="tel:+33612345678"> 📞 06 12 34 56 78 </a>
       </section>
     </main>
 
@@ -293,6 +295,20 @@
 .contact {
   padding: 80px 20px;
   text-align: center;
+}
+.contact-mail,
+.contact-phone {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: var(--blue-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-mail:hover,
+.contact-phone:hover {
+  color: var(--blue-accent);
 }
 
 /* FOOTER */
